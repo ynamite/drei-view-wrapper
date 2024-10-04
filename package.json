@@ -1,0 +1,40 @@
+{
+  "name": "view-post-processing",
+  "version": "1.0.0",
+  "description": "Shows how to allow Drei View.tsx to use EffectComposer from react-postprocessing with full transparency",
+  "keywords": [
+    "drei",
+    "view",
+    "postprocessing",
+    "transparency"
+  ],
+  "main": "src/index.js",
+  "dependencies": {
+    "@react-three/drei": "9.114.0",
+    "@react-three/fiber": "8.17.8",
+    "@react-three/postprocessing": "2.16.2",
+    "postprocessing": "6.36.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-scripts": "5.0.1",
+    "three": "0.169.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b",
+  "pnpm": {
+    "patchedDependencies": {
+      "@react-three/postprocessing": "patches/@react-three__postprocessing.patch"
+    }
+  }
+}

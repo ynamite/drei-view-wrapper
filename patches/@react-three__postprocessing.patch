@@ -1,0 +1,28 @@
+diff --git a/dist/EffectComposer.js b/dist/EffectComposer.js
+index 335539d470b862efff4d34818a28d1ed78255005..21e36ddaf9305a3166cf5e2cad47d072449b6de9 100644
+--- a/dist/EffectComposer.js
++++ b/dist/EffectComposer.js
+@@ -1,11 +1,12 @@
+ import { jsx } from "react/jsx-runtime";
+-import { NoToneMapping, HalfFloatType } from "three";
++import { NoToneMapping, HalfFloatType, Vector2 } from "three";
+ import React, { createContext, forwardRef, useMemo, useEffect, useRef, useLayoutEffect, useImperativeHandle } from "react";
+ import { useThree, useFrame, useInstanceHandle } from "@react-three/fiber";
+ import { EffectComposer as EffectComposer$1, RenderPass, NormalPass, DepthDownsamplingPass, Effect, EffectPass, EffectAttribute, Pass } from "postprocessing";
+ import { isWebGL2Available } from "three-stdlib";
+ const EffectComposerContext = createContext(null);
+ const isConvolution = (effect) => (effect.getAttributes() & EffectAttribute.CONVOLUTION) === EffectAttribute.CONVOLUTION;
++const glSize = new Vector2()
+ const EffectComposer = React.memo(
+   forwardRef(
+     ({
+@@ -58,7 +59,8 @@ const EffectComposer = React.memo(
+         enableNormalPass,
+         resolutionScale
+       ]);
+-      useEffect(() => composer == null ? void 0 : composer.setSize(size.width, size.height), [composer, size]);
++      gl.getSize(glSize)
++      useEffect(() => composer == null ? void 0 : composer.setSize(glSize.width, glSize.height), [composer, glSize.width, glSize.height]);
+       useFrame(
+         (_, delta) => {
+           if (enabled) {
